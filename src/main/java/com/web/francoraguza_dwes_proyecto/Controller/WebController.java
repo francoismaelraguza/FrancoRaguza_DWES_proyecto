@@ -19,7 +19,7 @@ public class WebController {
     }
 
     @PostMapping("/login")
-    public String enviarUsuario(@Valid @ModelAttribute("usario")Usuario usuario, BindingResult errores){
+    public String enviarUsuario(@Valid @ModelAttribute("usuario")Usuario usuario, BindingResult errores){
         if (errores.hasErrors()){
             return "index";
         }
@@ -29,7 +29,7 @@ public class WebController {
 
     @GetMapping("/pokemon")
     public String pokeLista(Model model){
-        model.addAttribute("usario", usuarioActual);
+        model.addAttribute("usuario", usuarioActual);
         return "pokemon";
     }
 }
