@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Principal</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div th:replace="~{layout :: header('inicio')}"></div>
+    <main>
+        <h1>Bienvenido a PokémonWeb!</h1>
+        <form th:action="@{/login}" th:object="${usuario}" method="post">
+            <label for="user">Usuario: </label>
+            <input type="text" id="user" th:field="*{user}"
+                   th:errorclass="campo-error" required>
+            <span class="mensaje-error" th:if="${#fields.hasErrors('user')}"
+                  th:errors="*{user}">Mensaje de error</span>
+            <button
+        </form>
+    </main>
+    <div th:replace="~{layout :: footer}"></div>
+</body>
+</html>

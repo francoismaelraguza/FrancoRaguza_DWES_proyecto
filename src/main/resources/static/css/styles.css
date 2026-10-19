@@ -1,0 +1,212 @@
+/* ===== Variables ===== */
+:root {
+    --rojo: #e3350d;
+    --rojo-oscuro: #b82a0a;
+    --negro: #222224;
+    --gris: #f2f2f2;
+    --gris-borde: #d9d9d9;
+    --blanco: #ffffff;
+    --amarillo: #ffcb05;
+    --error: #c0392b;
+    --radio: 10px;
+}
+
+/* ===== Base ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--gris);
+    color: var(--negro);
+    line-height: 1.5;
+}
+
+/* ===== Cabecera ===== */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 2rem;
+    background: var(--rojo);
+    color: var(--blanco);
+    border-bottom: 4px solid var(--negro);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.header .logo img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.header .usuario {
+    margin-left: auto;
+    order: 3;
+    padding: 0.3rem 0.9rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.header .usuario:empty {
+    display: none;
+}
+
+.header nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.header nav a {
+    padding: 0.45rem 1rem;
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--radio);
+    transition: background 0.2s, color 0.2s;
+}
+
+.header nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.header nav a.activo {
+    background: var(--amarillo);
+    color: var(--negro);
+}
+
+/* ===== Contenido principal ===== */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--blanco);
+    border-radius: var(--radio);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+main h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--rojo);
+    font-size: 2rem;
+}
+
+main p {
+    margin-bottom: 1rem;
+}
+
+/* ===== Formulario ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    font-size: 1rem;
+    border: 2px solid var(--gris-borde);
+    border-radius: var(--radio);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 3px rgba(227, 53, 13, 0.2);
+}
+
+button,
+input[type="submit"] {
+    margin-top: 0.75rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blanco);
+    background: var(--rojo);
+    border: none;
+    border-radius: var(--radio);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: var(--rojo-oscuro);
+}
+
+button:active,
+input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* ===== Errores de validación ===== */
+.campo-error {
+    border-color: var(--error) !important;
+    background: #fdf0ee;
+}
+
+.mensaje-error {
+    color: var(--error);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ===== Pie de página ===== */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: var(--negro);
+    color: var(--gris-borde);
+    font-size: 0.9rem;
+    border-top: 4px solid var(--rojo);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .header {
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
+    }
+
+    main {
+        margin: 1rem;
+        width: auto;
+        padding: 1.25rem;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
