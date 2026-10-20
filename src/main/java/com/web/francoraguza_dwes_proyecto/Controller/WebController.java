@@ -1,6 +1,6 @@
 package com.web.francoraguza_dwes_proyecto.Controller;
 
-import com.web.francoraguza_dwes_proyecto.Model.Usuario;
+import com.web.francoraguza_dwes_proyecto.Model.Trainer;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,25 +11,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class WebController {
-    public Usuario usuarioActual;
+    public Trainer trainerActual;
     @GetMapping("/")
     public String inicio(Model model) {
-        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("trainer", new Trainer());
         return "index";
     }
 
     @PostMapping("/login")
-    public String enviarUsuario(@Valid @ModelAttribute("usuario")Usuario usuario, BindingResult errores){
+    public String enviarUsuario(@Valid @ModelAttribute("trainer") Trainer trainer, BindingResult errores){
         if (errores.hasErrors()){
             return "index";
         }
-        usuarioActual = usuario;
+        trainerActual = trainer;
         return "redirect:/pokemon";
     }
 
     @GetMapping("/pokemon")
     public String pokeLista(Model model){
-        model.addAttribute("usuario", usuarioActual);
+        model.addAttribute("trainer", trainerActual);
         return "pokemon";
     }
 }

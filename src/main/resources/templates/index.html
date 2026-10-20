@@ -12,13 +12,13 @@
     <div th:replace="~{layout :: header('inicio')}"></div>
     <main>
         <h1>Bienvenido a PokémonWeb!</h1>
-        <form th:action="@{/login}" th:object="${usuario}" method="post">
-            <label for="user">Usuario: </label>
-            <input type="text" id="user" th:field="*{user}"
+        <form th:action="@{/login}" th:object="${trainer}" method="post">
+            <label for="trainer">Trainer: </label>
+            <input type="text" id="trainer" th:field="*{user}"
                    th:errorclass="campo-error" required>
             <span class="mensaje-error" th:if="${#fields.hasErrors('user')}"
                   th:errors="*{user}">Mensaje de error</span>
-            <button
+            <button type="submit">Enviar</button>
         </form>
     </main>
     <div th:replace="~{layout :: footer}"></div>
