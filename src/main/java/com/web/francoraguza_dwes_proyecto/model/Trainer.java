@@ -1,4 +1,4 @@
-package com.web.francoraguza_dwes_proyecto.Model;
+package com.web.francoraguza_dwes_proyecto.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

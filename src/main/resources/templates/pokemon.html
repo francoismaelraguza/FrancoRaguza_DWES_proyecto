@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,9 +11,15 @@
 <body>
     <div th:replace="~{layout :: header('inicio')}"></div>
     <main>
+        <h3 th:text="${trainer.user}"></h3>
         <section>
-            <div class="tarjeta">
-                pokemon
+            <div class="tarjeta" th:each="pokemon : ${listaPokemon}">
+                <img th:src="@{${pokemon.sprites.front_default}}">
+                <h2 th:text="${pokemon.name}">Nombre</h2>
+
+                <div class="listaTipos" th:each="tipo : ${pokemon.types}">
+                    <p class="tipo" th:text="${tipo}"></p>
+                </div>
             </div>
         </section>
     </main>

@@ -1,6 +1,8 @@
-package com.web.francoraguza_dwes_proyecto.Controller;
+package com.web.francoraguza_dwes_proyecto.controller;
 
-import com.web.francoraguza_dwes_proyecto.Model.Trainer;
+import com.web.francoraguza_dwes_proyecto.model.Pokemon;
+import com.web.francoraguza_dwes_proyecto.model.Trainer;
+import com.web.francoraguza_dwes_proyecto.service.LectorPokemon;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class WebController {
     public Trainer trainerActual;
+
     @GetMapping("/")
     public String inicio(Model model) {
         model.addAttribute("trainer", new Trainer());
@@ -28,8 +35,12 @@ public class WebController {
     }
 
     @GetMapping("/pokemon")
-    public String pokeLista(Model model){
+    public String pokeLista(Model model) throws IOException{
         model.addAttribute("trainer", trainerActual);
+        List<Pokemon> listaPokemon = new LectorPokemon().cargar();
+        model.addAttribute("pokemon", listaPokemon);
         return "pokemon";
     }
+
+
 }

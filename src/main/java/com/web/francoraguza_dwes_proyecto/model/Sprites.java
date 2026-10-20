@@ -1,10 +1,12 @@
-package com.web.francoraguza_dwes_proyecto.Model;
+package com.web.francoraguza_dwes_proyecto.model;
 
 public class Sprites {
     private String front_default;
     private String back_default;
     private String front_shiny;
     private String back_shiny;
+
+    Sprites(){}
 
     public Sprites(String front_default, String back_default, String front_shiny, String back_shiny) {
         this.front_default = front_default;
