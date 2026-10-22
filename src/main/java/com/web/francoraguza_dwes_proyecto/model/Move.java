@@ -1,12 +1,10 @@
 package com.web.francoraguza_dwes_proyecto.model;
 
-import java.io.InputStream;
-
 public class Move {
     private String name;
     private String url;
     private Integer accuracy;
-    private int power;
+    private Integer power;
     private String type;
 
     Move(){}
@@ -35,7 +33,7 @@ public class Move {
         this.url = url;
     }
 
-    public int getAccuracy() {
+    public Integer getAccuracy() {
         return accuracy;
     }
 
@@ -43,11 +41,11 @@ public class Move {
         this.accuracy = accuracy;
     }
 
-    public int getPower() {
+    public Integer getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(Integer power) {
         this.power = power;
     }
 

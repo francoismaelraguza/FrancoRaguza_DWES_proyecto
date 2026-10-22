@@ -67,6 +67,7 @@ body {
 .header nav {
     display: flex;
     gap: 0.5rem;
+    margin-left: auto;
 }
 
 .header nav a {
@@ -108,6 +109,13 @@ main h1 {
 
 main p {
     margin-bottom: 1rem;
+}
+
+/* Páginas anchas: listado y detalle */
+main.detalle,
+main.lista {
+    flex: none;          /* no se estira hasta el footer */
+    max-width: 1000px;
 }
 
 /* ===== Formulario ===== */
@@ -174,8 +182,30 @@ input[type="submit"]:active {
     font-weight: 600;
 }
 
+/* ===== Formulario de login (encuadrado) ===== */
+.formulario-login {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: var(--gris);
+    border: 2px solid var(--negro);
+    border-top: 10px solid var(--rojo);
+    border-radius: var(--radio);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.formulario-login button {
+    width: 100%;
+}
+
+.formulario-login .mensaje-error {
+    display: block;
+}
+
 /* ===== Pie de página ===== */
 footer {
+    margin-top: auto;    /* siempre pegado abajo */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -192,6 +222,313 @@ footer p {
     margin: 0;
 }
 
+/* ===== Listado / Cuadrícula ===== */
+.lista h1 {
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+    text-align: center;
+    font-weight: 600;
+    color: var(--rojo-oscuro);
+}
+
+.cuadricula {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.tarjeta {
+    position: relative;
+    background: linear-gradient(135deg, #fde8e4, var(--blanco));
+    border: 2px solid var(--negro);
+    border-top: 10px solid var(--rojo);
+    border-radius: var(--radio);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* El enlace ocupa toda la tarjeta */
+.tarjeta a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 1.5rem 1rem 1.25rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.tarjeta .numero {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--rojo-oscuro);
+}
+
+.tarjeta img {
+    width: 150px;
+    height: 150px;
+    padding: 0.5rem;
+    object-fit: contain;
+    image-rendering: pixelated;
+    background: var(--blanco);
+    border: 3px solid var(--amarillo);
+    border-radius: 50%;
+}
+
+.tarjeta h2 {
+    margin: 0.9rem 0 0.6rem;
+    color: var(--negro);
+    font-size: 1.3rem;
+    text-transform: capitalize;
+}
+
+/* ===== Tipos (compartido por listado y detalle) ===== */
+.listaTipos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.tipo {
+    margin: 0;
+    padding: 0.15rem 0.8rem;
+    background: var(--amarillo);
+    color: var(--negro);
+    border: 2px solid var(--negro);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* Colores oficiales por tipo */
+.tipo { color: var(--blanco); text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); }
+
+.tipo-normal   { background: #a8a77a; }
+.tipo-fire     { background: #ee8130; }
+.tipo-water    { background: #6390f0; }
+.tipo-electric { background: #f7d02c; }
+.tipo-grass    { background: #7ac74c; }
+.tipo-ice      { background: #96d9d6; }
+.tipo-fighting { background: #c22e28; }
+.tipo-poison   { background: #a33ea1; }
+.tipo-ground   { background: #e2bf65; }
+.tipo-flying   { background: #a98ff3; }
+.tipo-psychic  { background: #f95587; }
+.tipo-bug      { background: #a6b91a; }
+.tipo-rock     { background: #b6a136; }
+.tipo-ghost    { background: #735797; }
+.tipo-dragon   { background: #6f35fc; }
+.tipo-dark     { background: #705746; }
+.tipo-steel    { background: #b7b7ce; }
+.tipo-fairy    { background: #d685ad; }
+
+/* Fondos claros: texto oscuro para que se lea */
+.tipo-electric,
+.tipo-ice,
+.tipo-ground,
+.tipo-steel {
+    color: var(--negro);
+    text-shadow: none;
+}
+
+/* Categoría de peso */
+.peso {
+    margin-left: 0.4rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--blanco);
+    text-transform: capitalize;
+}
+
+.peso-ligero { background: #4caf50; }
+.peso-normal { background: #f5a623; }
+.peso-pesado { background: #c0392b; }
+/* ===== Detalle Pokémon ===== */
+.detalle-cabecera {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #fde8e4, var(--blanco));
+    border: 2px solid var(--negro);
+    border-top: 10px solid var(--rojo);
+    border-radius: var(--radio);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.detalle-cabecera .numero {
+    font-weight: 700;
+    color: var(--rojo-oscuro);
+}
+
+.detalle-cabecera h1 {
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+}
+
+/* Las 4 imágenes arriba */
+.fotos-pokemon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.fotos-pokemon img {
+    width: 120px;
+    height: 120px;
+    padding: 0.5rem;
+    object-fit: contain;
+    image-rendering: pixelated;
+    background: var(--blanco);
+    border: 3px solid var(--amarillo);
+    border-radius: 50%;
+}
+
+/* Altura y peso */
+.datos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.dato {
+    margin: 0;
+    padding: 0.3rem 0.9rem;
+    background: var(--gris);
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radio);
+    font-size: 0.9rem;
+}
+
+.dato strong {
+    margin-left: 0.3rem;
+}
+
+/* Dos columnas de tarjetas */
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.panel {
+    padding: 1.25rem;
+    background: var(--blanco);
+    border: 2px solid var(--gris-borde);
+    border-radius: var(--radio);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--rojo);
+}
+
+/* Estadísticas con barra */
+.stat {
+    list-style: none;
+}
+
+.stat li {
+    display: grid;
+    grid-template-columns: 110px 35px 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.stat p {
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.barra {
+    height: 10px;
+    background: var(--gris);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.barra span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+}
+
+.stat li:nth-child(1) .barra span { background: #f95858; }
+.stat li:nth-child(2) .barra span { background: #f5ac78; }
+.stat li:nth-child(3) .barra span { background: #f7d85f; }
+.stat li:nth-child(4) .barra span { background: #9db7f5; }
+.stat li:nth-child(5) .barra span { background: #a7db8d; }
+.stat li:nth-child(6) .barra span { background: #fa92b2; }
+
+/* Movimientos */
+.move {
+    list-style: none;
+}
+
+.move li {
+    display: grid;
+    grid-template-columns: 1fr auto 70px 80px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--gris-borde);
+    font-size: 0.85rem;
+}
+
+.move p {
+    margin: 0;
+}
+
+.move a {
+    color: var(--negro);
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.move a:hover {
+    color: var(--rojo);
+}
+
+/* Botón volver */
+.boton-volver {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    color: var(--blanco);
+    background: var(--rojo);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radio);
+    transition: background 0.2s;
+}
+
+.boton-volver:hover {
+    background: var(--rojo-oscuro);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
     .header {
@@ -203,6 +540,10 @@ footer p {
         margin: 1rem;
         width: auto;
         padding: 1.25rem;
+    }
+
+    .detalle-grid {
+        grid-template-columns: 1fr;
     }
 
     footer {

@@ -12,7 +12,7 @@
     <div th:replace="~{layout :: header('inicio')}"></div>
     <main>
         <h1>Bienvenido a PokémonWeb!</h1>
-        <form th:action="@{/login}" th:object="${trainer}" method="post">
+        <form class="formulario-login" th:action="@{/login}" th:object="${trainer}" method="post">
             <label for="trainer">Trainer: </label>
             <input type="text" id="trainer" th:field="*{user}"
                    th:errorclass="campo-error" required>

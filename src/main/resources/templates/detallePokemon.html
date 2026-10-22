@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Pokémon</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{layout :: header('detalle')}"></div>
+
+<main class="detalle">
+
+    <section class="detalle-cabecera">
+        <div class="fotos-pokemon">
+            <img th:src="${pokemon.sprites.front_default}" th:alt="${pokemon.name}">
+            <img th:src="${pokemon.sprites.back_default}" th:alt="${pokemon.name}">
+            <img th:src="${pokemon.sprites.front_shiny}" th:alt="${pokemon.name}">
+            <img th:src="${pokemon.sprites.back_shiny}" th:alt="${pokemon.name}">
+        </div>
+
+        <span class="numero" th:text="'#' + ${pokemon.id}">#0</span>
+        <h1 th:text="${pokemon.name}">Nombre Pokemon</h1>
+
+        <div class="listaTipos">
+            <p class="tipo" th:each="tipo : ${pokemon.types}"
+               th:classappend="'tipo-' + ${tipo}" th:text="${tipo}"></p>
+        </div>
+
+        <div class="datos">
+            <p class="dato">Altura <strong th:text="${pokemon.height / 10.0} + ' m'">1.7 m</strong></p>
+            <p class="dato"
+               th:with="kg=${pokemon.weight / 10.0},
+            categoria=${kg lt 20 ? 'ligero' : (kg le 100 ? 'normal' : 'pesado')}">
+                Peso <strong th:text="${kg} + ' kg'">90 kg</strong>
+                <span class="peso" th:classappend="'peso-' + ${categoria}" th:text="${categoria}">normal</span>
+            </p>
+        </div>
+    </section>
+
+    <section class="detalle-grid">
+        <div class="panel">
+            <h2>Estadísticas base</h2>
+            <ul class="stat">
+                <li th:each="stat : ${pokemon.stats}">
+                    <p th:text="${stat.name}">hp</p>
+                    <p th:text="${stat.value}">78</p>
+                    <div class="barra">
+                        <span th:style="'width:' + ${stat.value * 100 / 255} + '%'"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="panel">
+            <h2>Movimientos</h2>
+            <ul class="move">
+                <li th:each="move : ${pokemon.moves}">
+                    <a th:href="@{${move.url}}" th:text="${move.name}">nombre</a>
+                    <p class="tipo" th:classappend="'tipo-' + ${move.type}" th:text="${move.type}">tipo</p>
+                    <p th:text="'Potencia ' + ${move.power}">Pot.</p>
+                    <p th:text="'Precision ' + (${move.accuracy} ?: '-')">Prec.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <a class="boton-volver" th:href="@{/pokemon}">Volver</a>
+</main>
+
+<div th:replace="~{layout :: footer}"></div>
+</body>
+</html>
