@@ -15,7 +15,7 @@
 
     <section class="cuadricula" aria-label="Lista de Pokémon">
         <article class="tarjeta" th:each="pokemon : ${listaPokemon}">
-            <a th:href="@{/pokemon/{id}(id=${pokemon.id})}">
+            <a th:href="@{/pokemons/{id}(id=${pokemon.id})}">
                 <img th:src="${pokemon.sprites.front_default}" th:alt="${pokemon.name}">
                 <span class="numero" th:text="'#' + ${pokemon.id}">#0</span>
                 <h2 th:text="${pokemon.name}">Nombre</h2>

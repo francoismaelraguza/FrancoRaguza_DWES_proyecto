@@ -32,10 +32,10 @@ public class WebController {
             return "index";
         }
         trainerActual = trainer;
-        return "redirect:/pokemon";
+        return "redirect:/pokemons";
     }
 
-    @GetMapping("/pokemon")
+    @GetMapping("/pokemons")
     public String pokeLista(Model model) throws IOException{
         model.addAttribute("trainer", trainerActual);
         List<Pokemon> listaPokemon = new LectorPokemon().cargar();
@@ -43,7 +43,7 @@ public class WebController {
         return "pokemon";
     }
 
-    @GetMapping("/pokemon/{id}")
+    @GetMapping("/pokemons/{id}")
     public String detallePokemon(@PathVariable Integer id, Model model) throws IOException{
         List<Pokemon> listaPokemon = new LectorPokemon().cargar();
         for (Pokemon p: listaPokemon){
@@ -53,6 +53,11 @@ public class WebController {
             }
         }
         return "redirect:/notfound";
+    }
+
+    @GetMapping("/notfound")
+    public String notfound(){
+        return "notfound";
     }
 
 

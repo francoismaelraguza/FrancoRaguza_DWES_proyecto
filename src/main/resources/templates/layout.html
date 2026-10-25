@@ -25,7 +25,7 @@
         <p>Franco Ismael Raguza</p>
     </div>
     <div>
-        <p th:text="${fecha}">Fecha</p>
+        <span th:text="${#temporals.year(#temporals.createNow())}">Fecha</span>
     </div>
 </footer>
 
