@@ -1,12 +1,14 @@
 # Proyecto Pokémon
-![banner](img/banner.png)
+
+**Autor:** Franco Ismael Raguza
+
 ---
-## <img src="img/pokeball.svg" width="24" height="24" alt="Poké Ball"> Descripcion
-Recreacion con fines educativos del mitico juego "Pokémon" para aplicar conocimientos de clase.
+## <img src="src/main/resources/static/img/pokeball.svg.webp" width="24" height="24" alt="Poké Ball"> Descripcion
+Aplicación web hecha con Spring Boot y Thymeleaf con fines educativos del mitico juego "Pokémon" para aplicar conocimientos de clase.
 Pokémon es propiedad de Nintendo, Creatures Inc. y GAME FREAK. Proyecto de fan sin ánimo de lucro.
 
 ---
-## <img src="img/pokeball.svg" width="24" height="24" alt="Poké Ball"> Peticiones
+## <img src="src/main/resources/static/img/pokeball.svg.webp" width="24" height="24" alt="Poké Ball"> Peticiones
 
 | Método | Ruta | Qué hace | Respuesta del navegador |
 |--------|------|----------|-------------------------|
@@ -17,9 +19,9 @@ Pokémon es propiedad de Nintendo, Creatures Inc. y GAME FREAK. Proyecto de fan 
 | GET | `/notfound` | Aviso de Pokémon no encontrado | Página (`notfound`) |
 
 ---
-## <img src="img/pokeball.svg" width="24" height="24" alt="Poké Ball"> Features
+## <img src="src/main/resources/static/img/pokeball.svg.webp" width="24" height="24" alt="Poké Ball"> Features
 - features/fase1
 
 ---
-## <img src="img/pokeball.svg" width="24" height="24" alt="Poké Ball"> Versión
+## <img src="src/main/resources/static/img/pokeball.svg.webp" width="24" height="24" alt="Poké Ball"> Versión
 Version: **v1.0.0**
