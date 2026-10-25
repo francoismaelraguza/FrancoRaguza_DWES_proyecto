@@ -1,0 +1,25 @@
+package com.web.francoraguza_dwes_proyecto.model;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public class Trainer {
+    @NotBlank(message = "Introduce un usuario")
+    @Size(min = 3, max = 15, message = "Minimo 3 y Maximo 15 caracteres")
+    private String user;
+
+    public Trainer(){}
+
+    public Trainer(String user) {
+        this.user = user;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+}
+

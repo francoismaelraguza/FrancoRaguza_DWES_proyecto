@@ -1,0 +1,553 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+/* ===== Variables ===== */
+:root {
+    --caja: #3d6068;
+    --caja-oscura: #2f4a50;
+    --oro: #b8893c;
+    --marco: #e6e1d6;
+    --blanco: #ffffff;
+    --texto-oscuro: #2b2b2b;
+    --sombra-texto: #6b6b6b;
+    --amarillo: #ffcb05;
+    --verde-barra: #78c850;
+    --error: #ff9b8a;
+    --error-borde: #c0392b;
+    --pixel: "Press Start 2P", monospace;
+}
+
+/* ===== Base ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--pixel);
+    font-size: 0.75rem;
+    line-height: 2;
+    color: var(--blanco);
+    text-shadow: 2px 2px 0 var(--sombra-texto);
+    background: #4fbf8a url("../img/fondo-batalla.png") center / cover no-repeat fixed;
+    image-rendering: pixelated;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Press Start 2P solo existe en peso normal: el navegador inventaría un
+   negrita borroso. Lo evitamos y resaltamos con color. */
+strong {
+    font-weight: normal;
+    color: var(--amarillo);
+}
+
+/* ===== LA CAJA: definida una sola vez ===== */
+.header,
+main,
+footer,
+.tarjeta,
+.formulario-login,
+.cuadro-dialogo,
+.panel {
+    background: var(--caja);
+    border: 6px solid var(--oro);
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 4px var(--marco),
+                0 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* ===== Cabecera ===== */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1rem 1rem 0;
+    padding: 0.75rem 1.5rem;
+}
+
+.header .logo img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.header .usuario {
+    order: 3;
+}
+
+.header .usuario:empty {
+    display: none;
+}
+
+.header nav {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.header nav a::before {
+    content: "▶ ";
+    visibility: hidden;
+}
+
+.header nav a:hover::before,
+.header nav a.activo::before {
+    visibility: visible;
+}
+
+.header nav a.activo {
+    color: var(--amarillo);
+}
+
+/* ===== Contenido principal ===== */
+main {
+    flex: 1;
+    width: min(900px, calc(100% - 2rem));
+    margin: 1.5rem auto;
+    padding: 2rem;
+}
+
+main h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+}
+
+main p {
+    margin-bottom: 1rem;
+}
+.body-index {
+    background: url("../img/fondo-index.webp") center / cover no-repeat;
+    image-rendering: pixelated;
+}
+
+/* ===== Portada (index) ===== */
+.prof {
+    display: block;
+    width: 96px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+}
+
+/* ===== Formularios y botones ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+input,
+button {
+    font: inherit;
+    text-shadow: none;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    color: var(--texto-oscuro);
+    background: var(--marco);
+    border: 4px solid var(--oro);
+    border-radius: 6px;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--amarillo);
+}
+
+button,
+input[type="submit"],
+.boton-volver {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.75rem 1.2rem;
+    color: var(--texto-oscuro);
+    background: var(--marco);
+    border: 4px solid var(--oro);
+    border-radius: 6px;
+    text-shadow: none;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.boton-volver:hover {
+    background: var(--amarillo);
+}
+
+button:active,
+input[type="submit"]:active {
+    transform: translateY(2px);
+}
+
+.campo-error {
+    border-color: var(--error-borde) !important;
+}
+
+.mensaje-error {
+    display: block;
+    color: var(--error);
+    font-size: 0.65rem;
+}
+
+.formulario-login {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: var(--caja-oscura);
+}
+
+.formulario-login button {
+    width: 100%;
+}
+
+/* ===== Pie de página ===== */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 1rem 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.65rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ===== Carrusel ===== */
+.carrusel {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0.75rem 0.5rem 1.25rem;
+    scrollbar-color: var(--oro) var(--caja-oscura);
+}
+
+.tarjeta {
+    position: relative;
+    flex: 0 0 210px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem 1.25rem;
+    background: var(--caja-oscura);
+    transition: transform 0.15s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-6px);
+}
+
+.tarjeta .numero {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.9rem;
+    font-size: 0.6rem;
+    color: var(--amarillo);
+}
+
+.tarjeta img {
+    width: 150px;
+    height: 150px;
+    padding: 0.5rem;
+    object-fit: contain;
+    image-rendering: pixelated;
+    background: var(--marco);
+    border: 4px solid var(--oro);
+    border-radius: 50%;
+}
+
+.tarjeta h2 {
+    margin: 0.9rem 0 0.6rem;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+}
+
+/* ===== Tipos (etiquetas de color) ===== */
+.listaTipos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tipo {
+    margin: 0;
+    padding: 0 0.6rem;
+    color: var(--texto-oscuro);
+    background: var(--tipo, var(--marco));   /* si no hay color de tipo, usa el marco */
+    border: 3px solid var(--oro);
+    border-radius: 6px;
+    font-size: 0.6rem;
+    text-shadow: none;
+    text-transform: capitalize;
+}
+
+/* Cada clase solo define UNA variable; .tipo hace el resto */
+.tipo-normal   { --tipo: #a8a878; }
+.tipo-fire     { --tipo: #f08030; }
+.tipo-water    { --tipo: #6890f0; }
+.tipo-electric { --tipo: #f8d030; }
+.tipo-grass    { --tipo: #78c850; }
+.tipo-ice      { --tipo: #98d8d8; }
+.tipo-fighting { --tipo: #c03028; }
+.tipo-poison   { --tipo: #a040a0; }
+.tipo-ground   { --tipo: #e0c068; }
+.tipo-flying   { --tipo: #a890f0; }
+.tipo-psychic  { --tipo: #f85888; }
+.tipo-bug      { --tipo: #a8b820; }
+.tipo-rock     { --tipo: #b8a038; }
+.tipo-ghost    { --tipo: #705898; }
+.tipo-dragon   { --tipo: #7038f8; }
+.tipo-dark     { --tipo: #705848; }
+.tipo-steel    { --tipo: #b8b8d0; }
+.tipo-fairy    { --tipo: #ee99ac; }
+
+/* Fondos oscuros: texto blanco para que se lea */
+.tipo-fighting,
+.tipo-poison,
+.tipo-ghost,
+.tipo-dragon,
+.tipo-dark {
+    color: var(--blanco);
+}
+
+/* ===== Detalle del Pokémon ===== */
+.detalle-cabecera {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.detalle-cabecera p,
+.detalle-cabecera h1 {
+    margin: 0;
+}
+
+.fotos-pokemon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.fotos-pokemon img {
+    width: 96px;
+    height: 96px;
+    padding: 0.25rem;
+    image-rendering: pixelated;
+    background: var(--marco);
+    border: 4px solid var(--oro);
+    border-radius: 6px;
+}
+
+.detalle-cabecera .numero {
+    color: var(--amarillo);
+    font-size: 0.7rem;
+}
+
+.datos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+}
+
+.dato {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Etiqueta de categoría de peso */
+.peso {
+    padding: 0 0.6rem;
+    color: var(--texto-oscuro);
+    background: var(--marco);
+    border: 3px solid var(--oro);
+    border-radius: 6px;
+    font-size: 0.6rem;
+    text-shadow: none;
+    text-transform: capitalize;
+}
+
+.peso-ligero { background: #98d8d8; }
+.peso-normal { background: var(--marco); }
+.peso-pesado { background: #d9776a; }
+
+/* Dos paneles lado a lado; si no caben, se apilan solos */
+.detalle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    align-items: start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* .panel ya recibió la caja del grupo; aquí solo la hacemos más ligera */
+.panel {
+    padding: 1.25rem;
+    background: var(--caja-oscura);
+    border-width: 4px;
+    box-shadow: inset 0 0 0 3px var(--marco);
+}
+
+.panel h2 {
+    margin-bottom: 1rem;
+    color: var(--amarillo);
+    font-size: 0.8rem;
+}
+
+.panel ul {
+    list-style: none;
+}
+
+.panel p {
+    margin: 0;
+}
+
+/* Estadísticas: nombre y valor arriba, barra debajo ocupando todo el ancho */
+ul.stat li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.3);
+    font-size: 0.65rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+}
+
+.barra {
+    grid-column: 1 / -1;
+    height: 12px;
+    background: #1b2f33;
+    border: 2px solid var(--marco);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* <span> es inline: sin display:block ignora el height y el width */
+.barra span {
+    display: block;
+    height: 100%;
+    background: var(--verde-barra);
+}
+
+/* Movimientos: el nombre ocupa su línea, lo demás se coloca debajo */
+ul.move li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.3);
+    font-size: 0.6rem;
+    line-height: 1.6;
+}
+
+ul.move li a {
+    flex-basis: 100%;
+    font-size: 0.65rem;
+    text-transform: capitalize;
+}
+
+ul.move li a:hover {
+    color: var(--amarillo);
+}
+
+/* ===== Not Found (estilo batalla) ===== */
+
+body.notfound-body {
+    background: url("../img/fondoBatalla.jpg") center / cover no-repeat;
+    image-rendering: pixelated;
+}
+
+main.notfound {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    margin: 0;
+    padding: 2rem 1rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.cuadro-dialogo {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    padding: 1.5rem 2rem 4rem;
+}
+
+.cuadro-dialogo p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.boton-notfound {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.25rem;
+    font-size: 0.8rem;
+}
+
+.boton-notfound::before {
+    content: "▶ ";
+    visibility: hidden;
+}
+
+.boton-notfound:hover {
+    color: var(--amarillo);
+}
+
+.boton-notfound:hover::before {
+    visibility: visible;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .header {
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
+    }
+
+    main {
+        padding: 1.25rem;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{layout :: header('inicio')}"></div>
+<main class="lista">
+    <h1>Pokédex</h1>
+    <p class="subtitulo" th:if="${trainer != null}"
+       th:text="'Entrenador: ' + ${trainer.user}">Entrenador</p>
+
+    <section class="cuadricula" aria-label="Lista de Pokémon">
+        <article class="tarjeta" th:each="pokemon : ${listaPokemon}">
+            <a th:href="@{/pokemons/{id}(id=${pokemon.id})}">
+                <img th:src="${pokemon.sprites.front_default}" th:alt="${pokemon.name}">
+                <span class="numero" th:text="'#' + ${pokemon.id}">#0</span>
+                <h2 th:text="${pokemon.name}">Nombre</h2>
+                <div class="listaTipos">
+                    <p class="tipo" th:each="tipo : ${pokemon.types}"
+                       th:classappend="'tipo-' + ${tipo}" th:text="${tipo}"></p>
+                </div>
+            </a>
+        </article>
+    </section>
+</main>
+<div th:replace="~{layout :: footer}"></div>
+</body>
+</html>
