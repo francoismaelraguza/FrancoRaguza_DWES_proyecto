@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pokemon {
     private int height;
-    private int id;
+    private Long id;
     private String name;
     private List<Stat> stats;
     private Sprites sprites;
@@ -15,7 +15,7 @@ public class Pokemon {
 
     Pokemon(){}
 
-    public Pokemon(int height, int id, String name, List<Stat> stats, Sprites sprites, ArrayList<String> types, int weight, ArrayList<Move> moves) {
+    public Pokemon(int height, Long id, String name, List<Stat> stats, Sprites sprites, ArrayList<String> types, int weight, ArrayList<Move> moves) {
         this.height = height;
         this.id = id;
         this.name = name;
@@ -51,11 +51,11 @@ public class Pokemon {
         this.height = height;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

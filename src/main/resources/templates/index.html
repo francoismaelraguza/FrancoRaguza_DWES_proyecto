@@ -16,10 +16,10 @@
 
         <form class="formulario-login" th:action="@{/login}" th:object="${trainer}" method="post">
             <label for="trainer">Trainer: </label>
-            <input type="text" id="trainer" th:field="*{user}"
+            <input type="text" id="trainer" th:field="*{trainer}"
                    th:errorclass="campo-error" required>
-            <span class="mensaje-error" th:if="${#fields.hasErrors('user')}"
-                  th:errors="*{user}">Mensaje de error</span>
+            <span class="mensaje-error" th:if="${#fields.hasErrors('trainer')}"
+                  th:errors="*{trainer}">Mensaje de error</span>
             <button type="submit">Enviar</button>
         </form>
     </main>

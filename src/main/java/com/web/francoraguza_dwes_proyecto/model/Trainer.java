@@ -6,20 +6,20 @@ import jakarta.validation.constraints.Size;
 public class Trainer {
     @NotBlank(message = "Introduce un usuario")
     @Size(min = 3, max = 15, message = "Minimo 3 y Maximo 15 caracteres")
-    private String user;
+    private String trainer;
 
     public Trainer(){}
 
-    public Trainer(String user) {
-        this.user = user;
+    public Trainer(String trainer) {
+        this.trainer = trainer;
     }
 
-    public String getUser() {
-        return user;
+    public String getTrainer() {
+        return trainer;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String trainer) {
+        this.trainer = trainer;
     }
 }
 
