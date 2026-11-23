@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PokemonDTO {
     private int height;
-    private int id;
+    private Long id;
     private String name;
     private List<Stat> stats;
     private Sprites sprites;

@@ -1,8 +1,10 @@
 package com.web.francoraguza_dwes_proyecto.controller;
 
+import com.web.francoraguza_dwes_proyecto.dto.TrainerDTO;
 import com.web.francoraguza_dwes_proyecto.model.Pokemon;
 import com.web.francoraguza_dwes_proyecto.model.Trainer;
 import com.web.francoraguza_dwes_proyecto.repository.PokemonRepositoryImpl;
+import com.web.francoraguza_dwes_proyecto.service.PokemonService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,12 @@ import java.util.List;
 
 @Controller
 public class WebController {
+    PokemonService pokemonService;
+
+    public WebController(PokemonService pokemonService) {
+        this.pokemonService = pokemonService;
+    }
+
     public Trainer trainerActual;
 
     @GetMapping("/")
@@ -37,26 +45,14 @@ public class WebController {
     @GetMapping("/pokemons")
     public String pokeLista(Model model) throws IOException{
         model.addAttribute("trainer", trainerActual);
-        List<Pokemon> listaPokemon = new PokemonRepositoryImpl().cargar();
-        model.addAttribute("listaPokemon", listaPokemon);
+        model.addAttribute("listaPokemon", pokemonService.listarTodos());
         return "pokemon";
     }
 
     @GetMapping("/pokemons/{id}")
-    public String detallePokemon(@PathVariable Long id, Model model) throws IOException{
-        List<Pokemon> listaPokemon = new PokemonRepositoryImpl().cargar();
-        for (Pokemon p: listaPokemon){
-            if (id.equals(p.getId())){
-                model.addAttribute("pokemon", p);
-                return "detallePokemon";
-            }
-        }
-        return "redirect:/notfound";
-    }
-
-    @GetMapping("/notfound")
-    public String notfound(){
-        return "notfound";
+    public String detallePokemon(@PathVariable Long id, Model model){
+        model.addAttribute("pokemon", pokemonService.buscarPorID(id));
+        return "detallePokemon";
     }
 
 

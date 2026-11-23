@@ -5,5 +5,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalManagerExeption {
+    @ExceptionHandler(PokemonNotFound.class)
+    public String pokemonNotFound(PokemonNotFound ex){
+        return "notfound";
+    }
 
 }

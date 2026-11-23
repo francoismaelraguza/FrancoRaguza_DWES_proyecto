@@ -3,6 +3,8 @@ package com.web.francoraguza_dwes_proyecto.mapper;
 import com.web.francoraguza_dwes_proyecto.dto.PokemonDTO;
 import com.web.francoraguza_dwes_proyecto.model.Pokemon;
 
+import java.util.List;
+
 public final class PokemonMapper {
     public static PokemonDTO toPokemonDTO(Pokemon pokemon){
         PokemonDTO dto = new PokemonDTO();
@@ -15,5 +17,9 @@ public final class PokemonMapper {
         dto.setWeight(pokemon.getWeight());
         dto.setTypes(pokemon.getTypes());
         return dto;
+    }
+
+    public static List<PokemonDTO> pokemonDTOList(List<Pokemon> pokemonList){
+        return pokemonList.stream().map(pokemon -> toPokemonDTO(pokemon)).toList();
     }
 }
