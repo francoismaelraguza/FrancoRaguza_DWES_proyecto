@@ -18,7 +18,7 @@ public class Trainer {
         return trainer;
     }
 
-    public void setUser(String trainer) {
+    public void setTrainer(String trainer) {
         this.trainer = trainer;
     }
 }

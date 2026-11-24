@@ -19,6 +19,20 @@ public final class PokemonMapper {
         return dto;
     }
 
+    public static Pokemon toPokemon(PokemonDTO dto){
+        Pokemon pokemon = new Pokemon();
+        pokemon.setHeigth(dto.getHeight());
+        pokemon.setId(dto.getId());
+        pokemon.setName(dto.getName());
+        pokemon.setStats(dto.getStats());
+        pokemon.setSprites(dto.getSprites());
+        pokemon.setMoves(dto.getMoves());
+        pokemon.setWeight(dto.getWeight());
+        pokemon.setTypes(dto.getTypes());
+        return pokemon;
+    }
+
+
     public static List<PokemonDTO> pokemonDTOList(List<Pokemon> pokemonList){
         return pokemonList.stream().map(pokemon -> toPokemonDTO(pokemon)).toList();
     }

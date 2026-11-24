@@ -12,4 +12,9 @@ public final class TrainerMapper {
         dto.setTrainer(trainer.getTrainer());
         return dto;
     }
+    public static Trainer toTrainer(TrainerDTO dto){
+        Trainer trainer = new Trainer();
+        trainer.setTrainer(dto.getTrainer());
+        return trainer;
+    }
 }

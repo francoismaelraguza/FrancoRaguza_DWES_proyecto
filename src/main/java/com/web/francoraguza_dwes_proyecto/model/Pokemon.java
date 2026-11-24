@@ -13,7 +13,7 @@ public class Pokemon {
     private int weight;
     private ArrayList<Move> moves;
 
-    Pokemon(){}
+    public Pokemon(){}
 
     public Pokemon(int height, Long id, String name, List<Stat> stats, Sprites sprites, ArrayList<String> types, int weight, ArrayList<Move> moves) {
         this.height = height;
