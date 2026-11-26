@@ -39,4 +39,8 @@ public class PokemonRepositoryImpl implements PokemonRepository {
     public Pokemon findById(Long id) {
         return pokemonList.stream().filter((pokemon)->pokemon.getId().equals(id)).findFirst().orElse(null);
     }
+    @Override
+    public Pokemon findByName(String name){
+        return pokemonList.stream().filter((pokemon -> pokemon.getName().equals(name))).findFirst().orElse(null);
+    }
 }

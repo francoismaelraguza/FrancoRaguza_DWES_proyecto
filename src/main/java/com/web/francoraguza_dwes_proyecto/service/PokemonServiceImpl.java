@@ -1,6 +1,7 @@
 package com.web.francoraguza_dwes_proyecto.service;
 
 import com.web.francoraguza_dwes_proyecto.dto.PokemonDTO;
+import com.web.francoraguza_dwes_proyecto.exeption.EmptyExeption;
 import com.web.francoraguza_dwes_proyecto.exeption.PokemonNotFound;
 import com.web.francoraguza_dwes_proyecto.mapper.PokemonMapper;
 import com.web.francoraguza_dwes_proyecto.model.Pokemon;
@@ -31,6 +32,15 @@ public class PokemonServiceImpl implements PokemonService {
         Pokemon pokemon = pokemonRepository.findById(id);
         if(pokemon == null){
             throw new PokemonNotFound("No exite un pokemon con el id: " + id);
+        }
+        return PokemonMapper.toPokemonDTO(pokemon);
+    }
+
+    @Override
+    public PokemonDTO buscarPorNombre(String name){
+        Pokemon pokemon = pokemonRepository.findByName(name);
+        if(pokemon == null){
+            throw new PokemonNotFound("No exite un pokemon con el id: " + name);
         }
         return PokemonMapper.toPokemonDTO(pokemon);
     }

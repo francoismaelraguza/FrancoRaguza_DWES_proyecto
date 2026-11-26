@@ -7,4 +7,5 @@ import java.util.List;
 public interface PokemonRepository {
     public List<Pokemon> findAll();
     public Pokemon findById(Long id);
+    public Pokemon findByName(String name);
 }

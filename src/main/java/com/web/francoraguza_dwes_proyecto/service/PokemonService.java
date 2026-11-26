@@ -8,4 +8,5 @@ import java.util.List;
 public interface PokemonService {
     public List<PokemonDTO> listarTodos();
     public PokemonDTO buscarPorID(Long id);
+    public PokemonDTO buscarPorNombre(String name);
 }
