@@ -4,7 +4,7 @@ public class Stat {
     private String name;
     private int value;
 
-    Stat(){}
+    public Stat(){}
 
     public Stat(String name, int value) {
         this.name = name;

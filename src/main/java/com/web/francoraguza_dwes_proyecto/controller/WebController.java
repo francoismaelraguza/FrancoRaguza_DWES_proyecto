@@ -1,5 +1,6 @@
 package com.web.francoraguza_dwes_proyecto.controller;
 
+import com.web.francoraguza_dwes_proyecto.dto.PokemonDTO;
 import com.web.francoraguza_dwes_proyecto.dto.TrainerDTO;
 import com.web.francoraguza_dwes_proyecto.model.Pokemon;
 import com.web.francoraguza_dwes_proyecto.model.Trainer;
@@ -54,6 +55,7 @@ public class WebController {
 
     @PostMapping("/battle")
     public String batalla(@RequestParam("pokemon") String name, Model model){
+      //  PokemonDTO pokemonDTO = pokemonService.buscarBatalla(name);
         return "redirect:/pokemons";
     }
 

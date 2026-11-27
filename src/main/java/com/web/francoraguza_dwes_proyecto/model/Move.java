@@ -7,7 +7,7 @@ public class Move {
     private Integer power;
     private String type;
 
-    Move(){}
+    public Move(){}
 
     public Move(String name, String url, Integer accuracy, int power, String type) {
         this.name = name;
@@ -57,5 +57,4 @@ public class Move {
         this.type = type;
     }
 }
-
 

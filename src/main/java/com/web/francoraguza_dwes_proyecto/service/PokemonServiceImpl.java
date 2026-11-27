@@ -1,5 +1,6 @@
 package com.web.francoraguza_dwes_proyecto.service;
 
+import com.web.francoraguza_dwes_proyecto.dto.BattleDTO;
 import com.web.francoraguza_dwes_proyecto.dto.PokemonDTO;
 import com.web.francoraguza_dwes_proyecto.exeption.EmptyExeption;
 import com.web.francoraguza_dwes_proyecto.exeption.PokemonNotFound;
@@ -20,7 +21,7 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public List<PokemonDTO> listarTodos() {
-        List<PokemonDTO> pokemonDTOList= PokemonMapper.pokemonDTOList(pokemonRepository.findAll());
+        List<PokemonDTO> pokemonDTOList= PokemonMapper.toPokemonDTOList(pokemonRepository.findAll());
         if (pokemonDTOList.isEmpty()){
             throw new EmptyExeption("No hay ningun Pokémon");
         }
@@ -44,4 +45,6 @@ public class PokemonServiceImpl implements PokemonService {
         }
         return PokemonMapper.toPokemonDTO(pokemon);
     }
+
+
 }

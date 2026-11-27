@@ -33,7 +33,11 @@ public final class PokemonMapper {
     }
 
 
-    public static List<PokemonDTO> pokemonDTOList(List<Pokemon> pokemonList){
+    public static List<PokemonDTO> toPokemonDTOList(List<Pokemon> pokemonList){
         return pokemonList.stream().map(pokemon -> toPokemonDTO(pokemon)).toList();
+    }
+
+    public static List<Pokemon> toPokemonList(List<PokemonDTO> pokemonList){
+        return pokemonList.stream().map(pokemonDTO -> toPokemon(pokemonDTO)).toList();
     }
 }
